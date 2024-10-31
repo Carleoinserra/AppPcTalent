@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>810</w>
+      <h>460</h>
+    </coordinates>
+    <panel_attributes>com.example.demo::pc
+--
+~nome: String
+~marca: String
+~descrizione: String
+~prezzo: Double
+~url: String
+~qntMagazzino: int
+~qntVenduti: int
+--
++pc(): ctor
++pc(String nome, String marca, String descrizione, Double prezzo, String url, int qntMagazzino, int qntVenduti): ctor
++getNome(): String
++setNome(String nome): void
++getMarca(): String
++setMarca(String marca): void
++getDescrizione(): String
++setDescrizione(String descrizione): void
++getPrezzo(): Double
++setPrezzo(Double prezzo): void
++getUrl(): String
++setUrl(String url): void
++getQntMagazzino(): int
++setQntMagazzino(int qntMagazzino): void
++getQntVenduti(): int
++setQntVenduti(int qntVenduti): void
++toString(): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>820</x>
+      <y>0</y>
+      <w>2240</w>
+      <h>380</h>
+    </coordinates>
+    <panel_attributes>com.example.demo::MyControllerPcSql
+--
+~emailService: EmailService
+~d1: pcJdbcTemplate
+~listaPc = new ArrayList(): ArrayList&lt;pc&gt;
+~pcComprati = new ArrayList(): ArrayList&lt;pcComprati&gt;
+~listaCarrello = new ArrayList(): ArrayList&lt;pcComprati&gt;
+--
++MyControllerPcSql(pcJdbcTemplate d1): ctor
++getIndex(Model model): String
++getLista(Model model): String
++getMagazzino(Model model): String
++getPc(@RequestParam("nome") String nome, @RequestParam("marca") String marca, @RequestParam("descrizione") String descrizione, @RequestParam("prezzo") Double prezzo, @RequestParam("url") String url, @RequestParam("qntMagazzino") int qntMagazzino, @RequestParam("qntVenduti") int qntVenduti, Model m1): String
++rimuoviDalMagazzino(@RequestParam("nome") String nome, Model m1): String
++compra(@RequestParam("nome") String nome, @RequestParam("num") int num): String
++rimuoviDalCarrello(@RequestParam("nome") String nome, Model m1): String
++stampaCarrello(Model m1): String
++rimuovi(@RequestParam("nome") String nome, @RequestParam("num") int num): String
++svuotaCarrello(): String
++confermaAcquisto(Model m1): String
++getResoconto(@RequestParam("mail") String mail): String
++getLista(): ArrayList&lt;pc&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3070</x>
+      <y>0</y>
+      <w>840</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>com.example.demo::pcJdbcTemplate
+--
+-jdbcTemplateObject: JdbcTemplate
+--
++setJdbcTemplateObject(JdbcTemplate jdbcTemplateObject): void
++insertPc(String nome, String marca, String descrizione, double prezzo, String url, int qntMagazzino, int qntVenduti): int
++delete(String nome): int
++getLista(): ArrayList&lt;pc&gt;
++updateQnt(int qnt, String nome): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>470</y>
+      <w>1000</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>com.example.demo::pcComprati
+--
++qntComprato: int
+--
++pcComprati(String nome, String marca, String descrizione, Double prezzo, String url, int qntMagazzino, int qntVenduti, int qntComprato): ctor
++toString(): String
++getQnt(): int
++setQnt(int qnt): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1010</x>
+      <y>470</y>
+      <w>670</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>com.example.demo::EmailService
+--
+-mailSender: JavaMailSender
+--
++sendEmailWithImage(String to, String subject, String text, ArrayList&lt;String&gt; imagePaths): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1690</x>
+      <y>470</y>
+      <w>340</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>com.example.demo::AppPcConMailApplication
+--
+--
++main(String[] args): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>620</y>
+      <w>270</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>com.example.demo::DatabaseConfig
+--
+--
++dataSource(): DataSource
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>620</y>
+      <w>270</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>com.example.demo::MailConfig
+--
+--
++getJavaMailSender(): JavaMailSender
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
